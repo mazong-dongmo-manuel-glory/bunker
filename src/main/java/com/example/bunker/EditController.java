@@ -1,6 +1,8 @@
 package com.example.bunker;
+import java.text.SimpleDateFormat;
 import java.util.*;
 
+import com.example.bunker.pkgBunker.Personnel;
 import com.example.bunker.pkgBunker.pkgEmployeMaintenance.Ingenieur;
 import com.example.bunker.pkgBunker.pkgEmployeMaintenance.Ouvrier;
 import com.example.bunker.pkgBunker.pkgForceSecurite.Armee;
@@ -56,7 +58,10 @@ public class EditController {
         container.setAlignment(Pos.CENTER);
         container.setPadding(new Insets(10, 10, 10, 10));
         // Initialisation du ComboBox avec les types de personnel
-        select.getItems().addAll("Armee", "Milice", "Ouvrier", "Ingenieur", "Administrateur", "Scientifique");
+        for(Personnel p : BunkerManager.personnels){
+            select.getItems().add(p.getMatricule());
+
+        }
 
         // Ajouter un ChangeListener pour mettre à jour le ScrollPane en fonction de la
         // sélection
@@ -70,34 +75,86 @@ public class EditController {
         content.setContent(container);
     }
 
-    private void updateContent(String type) {
-        if (!type.isEmpty()) {
-            container.getChildren().clear();
-            createBasicFields();
-        }
+    private void updateContent(String mat) {
+        SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
+        Personnel p = BunkerManager.personnels.stream()
+                .filter(personnel -> personnel.getMatricule().equals(mat))
+                .findFirst()
+                .orElse(null);
+        matricule.set(p.getMatricule());
+        prenom.set(p.getPrenom());
+        nom.set(p.getNom());
+        vivant.set(p.getVivant());
+        dateNaissance.set(formatter.format(p.getDateNaissance().getTime()));
+        createBasicFields();
+        String type = "";
+        if (p instanceof Ingenieur) {
+            type = "Ingenieur";
+            Ingenieur ing = (Ingenieur) p;
+            secteur.set(ing.getSecteur());
+            specialite.set(ing.getSpecialiste());
 
-        switch (type) {
-            case "Armee":
-                createArmeeFields();
-                break;
-            case "Milice":
-                createMiliceFields();
-                break;
-            case "Ingenieur":
-                createIngenieurFields();
-                break;
-            case "Ouvrier":
-                createOuvrierFields();
-                break;
-            case "Scientifique":
-                createScientifiqueFields();
-                break;
-            case "Administrateur":
-                createAdministrateurFields();
+            dateFinEtude.set(formatter.format(ing.getDateFinEtude().getTime()));
+            niveauEtude.set(String.valueOf(ing.getNiveauEtude()));
+            createIngenieurFields();
+        } else if (p instanceof Ouvrier) {
+            type = "Ouvrier";
+            Ouvrier ouv = (Ouvrier) p;
+
+            secteur.set(ouv.getSecteur());
+            quartDeTravail.set(String.valueOf(ouv.getQuartDetravail()));
+            genreTravail.set(ouv.getGenreDeTravail());
+            createOuvrierFields();
+        } else if (p instanceof Milice) {
+            type = "Milice";
+            Milice milice = (Milice) p;
+            grade.set(milice.getGrade());
+            poste.set(milice.getPoste());
+            anneeService.set(String.valueOf(milice.getAnneeService()));
+            arme.set(milice.getArme());
+            nombrePlainte.set(String.valueOf(milice.getNombrePlainte()));
+            createMiliceFields();
+        } else if (p instanceof Armee) {
+            type = "Armee";
+            Armee armee = (Armee) p;
+            grade.set(armee.getGrade());
+            poste.set(armee.getPoste());
+            anneeService.set(String.valueOf(armee.getAnneeService()));
+            arme.set(armee.getArme());
+            nombreVictime.set(String.valueOf(armee.getNombreVictime()));
+            nombreSortie.set(String.valueOf(armee.getNombreSortie()));
+            StringBuilder matriculesString = new StringBuilder();
+            for (String m : armee.getMatricules()) {
+                matriculesString.append(m).append("\n");
+            }
+            matricules.set(matriculesString.toString());
+            createArmeeFields();
+        } else if (p instanceof Scientifique) {
+            type = "Scientifique";
+            Scientifique sc = (Scientifique) p;
+            secteur.set(sc.getSecteur());
+            nombreProjet.set(String.valueOf(sc.getNombreProjet()));
+            nombreEmploye.set(String.valueOf(sc.getNombreEmploye()));
+            StringBuilder projetSring = new StringBuilder();
+            for (String m : sc.getListeProjet()) {
+                projetSring.append(m).append("\n");
+            }
+            listeProjet.set(projetSring.toString());
+            createScientifiqueFields();
+        } else if (p instanceof Administrateur) {
+            type = "Administrateur";
+            Administrateur admin = (Administrateur) p;
+            nombreEmploye.set(String.valueOf(admin.getNombreEmploye()));
+            secteur.set(admin.getSecteur());
+            nombreProjet.set(String.valueOf(admin.getNombreProjet()));
+            titre.set(admin.getTitre());
+            projet.set(admin.getProjetAffecte());
+            createAdministrateurFields();
         }
+        final String typ = type;
         valider.setOnAction(e->{
             ArrayList errors = new ArrayList();
-            switch (type) {
+            switch (typ) {
                 case "Armee":
                     errors = validateArmeeFields();
                     System.out.print(errors);
@@ -121,6 +178,7 @@ public class EditController {
                                 matricules.get().split("\n")
 
                         );
+                        BunkerManager.personnels.remove(p);
                         BunkerManager.add(armee);
                         System.out.println(armee);
 
@@ -146,6 +204,7 @@ public class EditController {
                                 arme.get(),
                                 Integer.parseInt(nombrePlainte.get())
                         );
+                        BunkerManager.personnels.remove(p);
                         BunkerManager.add(milice);
                         System.out.println(milice);
                     }
@@ -164,11 +223,7 @@ public class EditController {
                                         Integer.parseInt(dateNaissance.get().substring(8, 10))
                                 ),
                                 vivant.get(),
-                                Integer.parseInt(nombreEmploye.get()),
                                 secteur.get(),
-                                Integer.parseInt(nombreProjet.get()),
-                                projet.get(),
-                                titre.get(),
                                 specialite.get(),
                                 new GregorianCalendar(
                                         Integer.parseInt(dateFinEtude.get().substring(0, 4)),
@@ -178,6 +233,8 @@ public class EditController {
                                 Integer.parseInt(niveauEtude.get())
 
                         );
+                        BunkerManager.personnels.remove(p);
+                        System.out.print(BunkerManager.personnels.size());
                         BunkerManager.add(ingenieur);
                         System.out.println(ingenieur);
                     }
@@ -201,6 +258,7 @@ public class EditController {
                                 genreTravail.get()
 
                         );
+                        BunkerManager.personnels.remove(p);
                         BunkerManager.add(ouvrier);
                         System.out.println(ouvrier);
                     }
@@ -225,6 +283,7 @@ public class EditController {
                                 listeProjet.get().split("\n")
 
                         );
+                        BunkerManager.personnels.remove(p);
                         BunkerManager.add(scientifique);
                         System.out.println(scientifique);
                     }
@@ -250,6 +309,7 @@ public class EditController {
                                 titre.get()
 
                         );
+                        BunkerManager.personnels.remove(p);
                         BunkerManager.add(administrateur);
                         System.out.println(administrateur);
                     }
@@ -265,9 +325,11 @@ public class EditController {
             }else{
                 alert = new Alert(Alert.AlertType.INFORMATION);
                 alert.setTitle("Succès");
-                alert.setHeaderText("Ajout Réussi");
-                alert.setContentText("a été ajoutée avec succès !");
+                alert.setHeaderText("Modification Réussi");
+                alert.setContentText("a été modifiée avec succès !");
                 alert.showAndWait();
+                initialize();
+
             }
         });
     }
@@ -364,12 +426,7 @@ public class EditController {
         nombreEmployesField.textProperty().bindBidirectional(nombreEmploye);
         TextField secteurField = new TextField();
         secteurField.textProperty().bindBidirectional(secteur);
-        TextField nombreProjetsField = new TextField();
-        nombreProjetsField.textProperty().bindBidirectional(nombreProjet);
-        TextField projetAffecteField = new TextField();
-        projetAffecteField.textProperty().bindBidirectional(projet);
-        TextField titreField = new TextField();
-        titreField.textProperty().bindBidirectional(titre);
+
         TextField specialisteField = new TextField();
         specialisteField.textProperty().bindBidirectional(specialite);
         TextField dateFinEtudeField = new TextField();
@@ -377,16 +434,8 @@ public class EditController {
         TextField niveauEtudeField = new TextField();
         niveauEtudeField.textProperty().bindBidirectional(niveauEtude);
         ingenieurFields.getChildren().addAll(
-                new Label("Nombre d'Employés:"),
-                nombreEmployesField,
                 new Label("Secteur:"),
                 secteurField,
-                new Label("Nombre de Projets:"),
-                nombreProjetsField,
-                new Label("Projet Affecté:"),
-                projetAffecteField,
-                new Label("Titre:"),
-                titreField,
                 new Label("Spécialiste:"),
                 specialisteField,
                 new Label("Date de Fin d'Étude:"),
@@ -475,11 +524,6 @@ public class EditController {
         }
         if (matriculeValue == null || matriculeValue.trim().isEmpty()) {
             errors.add("Le champ Matricule est vide.");
-        } else {
-            boolean matriculeExists = BunkerManager.personnels.stream().anyMatch(personnel -> personnel.getMatricule().equals(matriculeValue));
-            if (matriculeExists) {
-                errors.add("Ce matricule est déjà utilisé par un autre personnel.");
-            }
         }
         if (prenomValue == null || prenomValue.trim().isEmpty()) {
             errors.add("Le champ Prénom est vide.");
@@ -617,40 +661,9 @@ public class EditController {
     private ArrayList<String> validateIngenieurFields() {
         ArrayList<String> errors = validateBasicFields();
 
-        if (nombreEmploye.get() == null || nombreEmploye.get().trim().isEmpty()) {
-            errors.add("Le nombre d'employés est requis.");
-        } else {
-            try {
-                int employes = Integer.parseInt(nombreEmploye.get());
-                if (employes < 0) {
-                    errors.add("Le nombre d'employés ne peut pas être négatif.");
-                }
-            } catch (NumberFormatException e) {
-                errors.add("Le nombre d'employés doit être un nombre.");
-            }
-        }
+
         if (secteur.get() == null || secteur.get().trim().isEmpty()) {
             errors.add("Le secteur est requis.");
-        }
-
-        if (nombreProjet.get() == null || nombreProjet.get().trim().isEmpty()) {
-            errors.add("Le nombre de projets est requis.");
-        } else {
-            try {
-                int projets = Integer.parseInt(nombreProjet.get());
-                if (projets < 0) {
-                    errors.add("Le nombre de projets ne peut pas être négatif.");
-                }
-            } catch (NumberFormatException e) {
-                errors.add("Le nombre de projets doit être un nombre.");
-            }
-        }
-        if (projet.get() == null || projet.get().trim().isEmpty()) {
-            errors.add("Le projet affecté est requis.");
-        }
-
-        if (titre.get() == null || titre.get().trim().isEmpty()) {
-            errors.add("Le titre est requis.");
         }
 
         if (specialite.get() == null || specialite.get().trim().isEmpty()) {

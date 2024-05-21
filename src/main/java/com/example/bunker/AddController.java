@@ -164,11 +164,7 @@ public class AddController {
                                         Integer.parseInt(dateNaissance.get().substring(8, 10))
                                 ),
                                 vivant.get(),
-                                Integer.parseInt(nombreEmploye.get()),
                                 secteur.get(),
-                                Integer.parseInt(nombreProjet.get()),
-                                projet.get(),
-                                titre.get(),
                                 specialite.get(),
                                 new GregorianCalendar(
                                         Integer.parseInt(dateFinEtude.get().substring(0, 4)),
@@ -360,16 +356,8 @@ public class AddController {
 
     private void createIngenieurFields() {
         VBox ingenieurFields = new VBox(10);
-        TextField nombreEmployesField = new TextField();
-        nombreEmployesField.textProperty().bindBidirectional(nombreEmploye);
         TextField secteurField = new TextField();
         secteurField.textProperty().bindBidirectional(secteur);
-        TextField nombreProjetsField = new TextField();
-        nombreProjetsField.textProperty().bindBidirectional(nombreProjet);
-        TextField projetAffecteField = new TextField();
-        projetAffecteField.textProperty().bindBidirectional(projet);
-        TextField titreField = new TextField();
-        titreField.textProperty().bindBidirectional(titre);
         TextField specialisteField = new TextField();
         specialisteField.textProperty().bindBidirectional(specialite);
         TextField dateFinEtudeField = new TextField();
@@ -377,16 +365,9 @@ public class AddController {
         TextField niveauEtudeField = new TextField();
         niveauEtudeField.textProperty().bindBidirectional(niveauEtude);
         ingenieurFields.getChildren().addAll(
-                new Label("Nombre d'Employés:"),
-                nombreEmployesField,
                 new Label("Secteur:"),
                 secteurField,
                 new Label("Nombre de Projets:"),
-                nombreProjetsField,
-                new Label("Projet Affecté:"),
-                projetAffecteField,
-                new Label("Titre:"),
-                titreField,
                 new Label("Spécialiste:"),
                 specialisteField,
                 new Label("Date de Fin d'Étude:"),
@@ -617,42 +598,9 @@ public class AddController {
     private ArrayList<String> validateIngenieurFields() {
         ArrayList<String> errors = validateBasicFields();
 
-        if (nombreEmploye.get() == null || nombreEmploye.get().trim().isEmpty()) {
-            errors.add("Le nombre d'employés est requis.");
-        } else {
-            try {
-                int employes = Integer.parseInt(nombreEmploye.get());
-                if (employes < 0) {
-                    errors.add("Le nombre d'employés ne peut pas être négatif.");
-                }
-            } catch (NumberFormatException e) {
-                errors.add("Le nombre d'employés doit être un nombre.");
-            }
-        }
         if (secteur.get() == null || secteur.get().trim().isEmpty()) {
             errors.add("Le secteur est requis.");
         }
-
-        if (nombreProjet.get() == null || nombreProjet.get().trim().isEmpty()) {
-            errors.add("Le nombre de projets est requis.");
-        } else {
-            try {
-                int projets = Integer.parseInt(nombreProjet.get());
-                if (projets < 0) {
-                    errors.add("Le nombre de projets ne peut pas être négatif.");
-                }
-            } catch (NumberFormatException e) {
-                errors.add("Le nombre de projets doit être un nombre.");
-            }
-        }
-        if (projet.get() == null || projet.get().trim().isEmpty()) {
-            errors.add("Le projet affecté est requis.");
-        }
-
-        if (titre.get() == null || titre.get().trim().isEmpty()) {
-            errors.add("Le titre est requis.");
-        }
-
         if (specialite.get() == null || specialite.get().trim().isEmpty()) {
             errors.add("Le spécialiste est requis.");
         }

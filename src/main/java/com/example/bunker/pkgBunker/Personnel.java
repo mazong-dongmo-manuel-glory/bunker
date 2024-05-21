@@ -58,12 +58,14 @@ public  class Personnel implements Serializable{
     public String getMatricule() {
         return matricule;
     }
-
+    public boolean getVivant() {
+        return vivant;
+    }
     @Override
     public String toString() {
         SimpleDateFormat formatDate = new SimpleDateFormat("yyyy-MM-dd");
         return "Matricule : " + matricule + "\nNom : " + nom + "\ndate de naissance : " + formatDate.format(dateNaissance.getTime())
-                + "\n";
+                + "\nVvivant : " + vivant+"\n";
     }
 
     public boolean equals(Personnel p) {

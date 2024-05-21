@@ -68,7 +68,7 @@ public class Gui extends Application {
                 controller.getMain().getChildren().remove(1);
                 controller.getMain().getChildren().add(addRoot);
             }catch (IOException e1){
-
+                System.out.println(e1);
             }
         });
         // Création de la scène
