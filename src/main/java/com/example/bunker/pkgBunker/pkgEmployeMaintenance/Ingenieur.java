@@ -7,13 +7,13 @@ public class Ingenieur extends EmployeMaintenance{
     private GregorianCalendar dateFinEtude;
     private int niveauEtude;
 
-    Ingenieur( String _matricule,String _nom, String _prenom,
-    GregorianCalendar _dateNaissance,
-    boolean _vivant,
-    int _nombreEmploye,
-    String _secteur,
-    int _nombreProjet ,String _projetAffecte,String _titre,
-    String _specialiste, GregorianCalendar _dateFinEtude, int _niveauEtude){
+    public Ingenieur(String _matricule, String _nom, String _prenom,
+                     GregorianCalendar _dateNaissance,
+                     boolean _vivant,
+                     int _nombreEmploye,
+                     String _secteur,
+                     int _nombreProjet, String _projetAffecte, String _titre,
+                     String _specialiste, GregorianCalendar _dateFinEtude, int _niveauEtude){
         super(_matricule,_nom, _prenom, _dateNaissance, _vivant, _secteur);
         setSpecialiste(_specialiste);
         setDateFinEtude(_dateFinEtude);

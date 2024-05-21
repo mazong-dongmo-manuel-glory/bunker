@@ -52,7 +52,18 @@ public class Gui extends Application {
         });
         controller.getAjouterBtn().addEventHandler(MouseEvent.MOUSE_CLICKED,e->{
             try{
-                FXMLLoader addLoader = new FXMLLoader(getClass().getResource("add-view.fxml"));
+                FXMLLoader editLoader = new FXMLLoader(getClass().getResource("add-view.fxml"));
+                Parent editRoot = editLoader.load();
+                controller.getMain().getChildren().remove(1);
+                controller.getMain().getChildren().add(editRoot);
+            }catch (IOException e1){
+
+            }
+        });
+        controller.getBtnEdit().addEventHandler(MouseEvent.MOUSE_CLICKED,e->{
+            System.out.print(10);
+            try{
+                FXMLLoader addLoader = new FXMLLoader(getClass().getResource("edit-view.fxml"));
                 Parent addRoot = addLoader.load();
                 controller.getMain().getChildren().remove(1);
                 controller.getMain().getChildren().add(addRoot);

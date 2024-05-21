@@ -16,6 +16,9 @@ public class GuiController {
     private HBox rechercheBtn;
 
     @FXML
+    private HBox edit;
+
+    @FXML
     private HBox ajouterBtn;
 
     public HBox getMain() {
@@ -30,5 +33,8 @@ public class GuiController {
     }
     public HBox getAjouterBtn() {
         return ajouterBtn;
+    }
+    public HBox getBtnEdit(){
+        return edit;
     }
 }

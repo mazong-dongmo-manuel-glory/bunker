@@ -5,8 +5,8 @@ import java.util.GregorianCalendar;
 public class Ouvrier extends EmployeMaintenance {
     private int quartDetravail;
     private String genreDeTravail;
-    Ouvrier(String _matricule,String _nom, String _prenom, GregorianCalendar _dateNaissance, boolean _vivant,String _secteur,
-    int _quartDeTravail, String _genreDeTravail ){
+    public Ouvrier(String _matricule, String _nom, String _prenom, GregorianCalendar _dateNaissance, boolean _vivant, String _secteur,
+                   int _quartDeTravail, String _genreDeTravail){
         super(_matricule,_nom, _prenom, _dateNaissance, _vivant, _secteur);
         setQuartDetravail(_quartDeTravail);
         setGenreDeTravail(_genreDeTravail);

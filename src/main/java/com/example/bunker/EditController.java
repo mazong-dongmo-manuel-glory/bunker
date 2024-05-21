@@ -15,7 +15,7 @@ import javafx.geometry.Pos;
 import javafx.scene.control.*;
 import javafx.scene.layout.VBox;
 
-public class AddController {
+public class EditController {
     VBox container = new VBox();
     @FXML
     private ComboBox<String> select;
@@ -99,32 +99,32 @@ public class AddController {
             ArrayList errors = new ArrayList();
             switch (type) {
                 case "Armee":
-                     errors = validateArmeeFields();
-                     System.out.print(errors);
-                     if(errors.isEmpty()){
-                         Armee armee = new Armee(
-                                 matricule.get(),
-                                 nom.get(),
-                                 prenom.get(),
-                                 new GregorianCalendar(
-                                         Integer.parseInt(dateNaissance.get().substring(0, 4)),
-                                         Integer.parseInt(dateNaissance.get().substring(5, 7)) - 1,
-                                         Integer.parseInt(dateNaissance.get().substring(8, 10))
-                                 ),
-                                 vivant.get(),
-                                 grade.get(),
-                                 poste.get(),
-                                 Integer.parseInt(anneeService.get()),
-                                 arme.get(),
-                                 Integer.parseInt(nombreVictime.get()),
-                                 Integer.parseInt(nombreSortie.get()),
-                                 matricules.get().split("\n")
+                    errors = validateArmeeFields();
+                    System.out.print(errors);
+                    if(errors.isEmpty()){
+                        Armee armee = new Armee(
+                                matricule.get(),
+                                nom.get(),
+                                prenom.get(),
+                                new GregorianCalendar(
+                                        Integer.parseInt(dateNaissance.get().substring(0, 4)),
+                                        Integer.parseInt(dateNaissance.get().substring(5, 7)) - 1,
+                                        Integer.parseInt(dateNaissance.get().substring(8, 10))
+                                ),
+                                vivant.get(),
+                                grade.get(),
+                                poste.get(),
+                                Integer.parseInt(anneeService.get()),
+                                arme.get(),
+                                Integer.parseInt(nombreVictime.get()),
+                                Integer.parseInt(nombreSortie.get()),
+                                matricules.get().split("\n")
 
-                         );
-                         BunkerManager.add(armee);
-                         System.out.println(armee);
+                        );
+                        BunkerManager.add(armee);
+                        System.out.println(armee);
 
-                     }
+                    }
                     break;
                 case "Milice":
                     errors = validateMiliceFields();

@@ -5,16 +5,17 @@ import java.util.GregorianCalendar;
 
 
 public class Scientifique extends Gestionnaire {
-    private ArrayList<String> listeProjet;
-    Scientifique(String _matricule,String _nom, String _prenom, GregorianCalendar _dateNaissance, boolean _vivant, int _nombreEmploye,
-            String _secteur, int _nombreProjet, ArrayList<String> _listeProjet) {
+    private String[] listeProjet;
+    public Scientifique(String _matricule, String _nom, String _prenom, GregorianCalendar _dateNaissance, boolean _vivant, int _nombreEmploye,
+                        String _secteur, int _nombreProjet, String[] _listeProjet) {
         super( _matricule,_nom, _prenom, _dateNaissance, _vivant, _nombreEmploye, _secteur, _nombreProjet);
+        setListeProjet(_listeProjet);
 
     }
-    public void setListeProjet(ArrayList<String> listeProjet) {
+    public void setListeProjet(String[] listeProjet) {
         this.listeProjet = listeProjet;
     }
-    public ArrayList<String> getListeProjet() {
+    public String[] getListeProjet() {
         return listeProjet;
     }
     @Override
@@ -26,10 +27,11 @@ public class Scientifique extends Gestionnaire {
         return super.toString()+projetString;
     }
     public boolean equals(Scientifique s) {
-        boolean result = s.getListeProjet().size() != listeProjet.size() ? false : true;
-        for(int i = 0;i <  listeProjet.size();i++){
-            if(!listeProjet.get(i).equals(listeProjet.get(i))){
+        boolean result = s.getListeProjet().length == listeProjet.length;
+        for (String string : listeProjet) {
+            if (!string.equals(string)) {
                 result = false;
+                break;
             }
         }
         return super.equals(s) && result;
