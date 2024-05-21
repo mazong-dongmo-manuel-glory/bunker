@@ -1,0 +1,4 @@
+armee=armee.txt
+bunker=bunker.ser
+gestionnaire=gestionnaire.txt
+maintenance=maintenace.txt

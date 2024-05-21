@@ -1,0 +1,7 @@
+#main{
+    -fx-background-color: red;
+}
+* {
+    -fx-focus-color: transparent;
+    -fx-font-family: "arial";
+}
