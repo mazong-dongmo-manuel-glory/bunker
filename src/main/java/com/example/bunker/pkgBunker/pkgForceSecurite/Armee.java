@@ -7,8 +7,8 @@ public class Armee extends ForceSecurite {
     private int nombreSortie;
     private String[] matricules;
 
-    Armee(String matricule, String _nom, String _prenom, GregorianCalendar _dateNaissance, boolean _vivant,
-            String _grade, String _poste, GregorianCalendar _anneeService, String _arme, int _nombreVictime,
+    public Armee(String matricule, String _nom, String _prenom, GregorianCalendar _dateNaissance, boolean _vivant,
+            String _grade, String _poste, int _anneeService, String _arme, int _nombreVictime,
             int _nombreSortie, String[] _matricules) {
         super(matricule, _nom, _prenom, _dateNaissance, _vivant, _grade, _poste, _anneeService, _arme);
         setNombreVictime(_nombreVictime);

@@ -7,9 +7,9 @@ import com.example.bunker.pkgBunker.Personnel;
 public abstract class ForceSecurite extends Personnel{
     protected String grade;
     protected String poste;
-    protected GregorianCalendar anneeService;
+    protected int anneeService;
     protected String arme;
-    ForceSecurite(String _matricule, String _nom, String _prenom, GregorianCalendar _dateNaissance, boolean _vivant,String _grade,String _poste, GregorianCalendar _anneeService,String _arme){
+    ForceSecurite(String _matricule, String _nom, String _prenom, GregorianCalendar _dateNaissance, boolean _vivant,String _grade,String _poste, int _anneeService,String _arme){
         super( _matricule,_nom, _prenom, _dateNaissance, _vivant);
         setGrade(_grade);
         setPoste(_poste);
@@ -20,7 +20,7 @@ public abstract class ForceSecurite extends Personnel{
     public void setGrade(String grade) {
         this.grade = grade;
     }
-    public void setAnneeService(GregorianCalendar anneeService) {
+    public void setAnneeService(int anneeService) {
         this.anneeService = anneeService;
     }
     public void setPoste(String poste) {
@@ -29,7 +29,7 @@ public abstract class ForceSecurite extends Personnel{
     public void setArme(String arme) {
         this.arme = arme;
     }
-    public GregorianCalendar getAnneeService() {
+    public int getAnneeService() {
         return anneeService;
     }
     public String getArme() {

@@ -121,4 +121,8 @@ public class BunkerManager implements Serializable {
         return false;
     }
 
+    public static void add(Personnel p){
+        personnels.add(p);
+    }
+
 }

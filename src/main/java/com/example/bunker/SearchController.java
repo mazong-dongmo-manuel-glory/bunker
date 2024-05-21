@@ -29,7 +29,6 @@ public class SearchController {
     @FXML
     public void initialize() {
         content.setFitToWidth(true);
-        content.getStylesheets().add(getClass().getResource("test.css").toExternalForm());
         content.getStyleClass().add("content-search");
 
         inputSearch.textProperty().bindBidirectional(searchvalue);
