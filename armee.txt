@@ -1,0 +1,84 @@
+armee.txt - 2024-05-21 13:59:59
+
+Matricule : ARM1
+Nom : Alan
+date de naissance : 1985-04-10
+Vvivant : true
+Grade : Capitaine
+Poste : Infanterie
+Annee de service : 10
+
+Nombre de victime : 20
+Nombre de sortie : 5
+Maticules :   MISSION1 MISSION2
+
+
+Matricule : ARM2
+Nom : Betty
+date de naissance : 1988-08-22
+Vvivant : true
+Grade : Lieutenant
+Poste : Artillerie
+Annee de service : 8
+
+Nombre de victime : 15
+Nombre de sortie : 4
+Maticules :   MISSION3 MISSION4
+
+
+Matricule : MIL1
+Nom : John
+date de naissance : 1990-02-01
+Vvivant : true
+Grade : Lieutenant
+Poste : Sécurité intérieure
+Annee de service : 5
+Nombre de plainte : 2
+
+
+Matricule : 451020
+Nom : Maxime
+date de naissance : 1990-10-15
+Vvivant : true
+Grade : General
+Poste : xxxxx
+Annee de service : 10
+
+Nombre de victime : 100
+Nombre de sortie : 10
+Maticules :   230426 2364464 5655656656 6565656 4544454
+
+
+Matricule : ARM3
+Nom : Charlie
+date de naissance : 1991-12-18
+Vvivant : true
+Grade : Sergent
+Poste : Aviation
+Annee de service : 6
+
+Nombre de victime : 10
+Nombre de sortie : 3
+Maticules :   MISSION5 MISSION6
+
+
+Matricule : MIL2
+Nom : Jane
+date de naissance : 1992-06-15
+Vvivant : true
+Grade : Sergent
+Poste : Patrouille
+Annee de service : 3
+Nombre de plainte : 1
+
+
+Matricule : MIL3
+Nom : Jim
+date de naissance : 1995-10-20
+Vvivant : true
+Grade : Caporal
+Poste : Gardiennage
+Annee de service : 4
+Nombre de plainte : 3
+
+

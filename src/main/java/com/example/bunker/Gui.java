@@ -19,7 +19,8 @@ public class Gui extends Application {
         //chargement de la configuration
         BunkerManager.loadConfig();
         BunkerManager.deserealize();
-        System.out.println(BunkerManager.personnels);
+        BunkerManager.trierPersonnelsParDateNaissance();
+
         // Chargement du fichier FXML principal
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("bunker-view.fxml"));
         Parent root = fxmlLoader.load();
@@ -40,17 +41,20 @@ public class Gui extends Application {
             controller.getMain().getChildren().add(configurationRoot);
         });
         controller.getRechercheBtn().addEventHandler(MouseEvent.MOUSE_CLICKED,e->{
+            BunkerManager.trierPersonnelsParDateNaissance();
+
             try{
                 FXMLLoader searchLoader = new FXMLLoader(getClass().getResource("search-view.fxml"));
                 Parent searchRoot = searchLoader.load();
                 controller.getMain().getChildren().remove(1);
                 controller.getMain().getChildren().add(searchRoot);
             }catch (IOException e1){
-
+                e1.printStackTrace();
             }
 
         });
         controller.getAjouterBtn().addEventHandler(MouseEvent.MOUSE_CLICKED,e->{
+            BunkerManager.trierPersonnelsParDateNaissance();
             try{
                 FXMLLoader editLoader = new FXMLLoader(getClass().getResource("add-view.fxml"));
                 Parent editRoot = editLoader.load();
@@ -61,7 +65,8 @@ public class Gui extends Application {
             }
         });
         controller.getBtnEdit().addEventHandler(MouseEvent.MOUSE_CLICKED,e->{
-            System.out.print(10);
+            BunkerManager.trierPersonnelsParDateNaissance();
+
             try{
                 FXMLLoader addLoader = new FXMLLoader(getClass().getResource("edit-view.fxml"));
                 Parent addRoot = addLoader.load();

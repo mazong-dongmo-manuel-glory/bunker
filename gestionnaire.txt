@@ -1,0 +1,35 @@
+gestionnaire.txt - 2024-05-21 13:59:59
+
+Matricule : ADM1
+Nom : Daniel
+date de naissance : 1975-05-12
+Vvivant : true
+Nombre employe : 30
+Secteur : Gestion
+Nombre projet : 5
+Projet Affecte : ProjetAffecte1
+Titre : Directeur
+
+
+Matricule : ADM2
+Nom : Emma
+date de naissance : 1980-09-25
+Vvivant : true
+Nombre employe : 25
+Secteur : Finance
+Nombre projet : 4
+Projet Affecte : ProjetAffecte2
+Titre : Chef de département
+
+
+Matricule : ADM3
+Nom : Frank
+date de naissance : 1984-01-14
+Vvivant : true
+Nombre employe : 20
+Secteur : RH
+Nombre projet : 3
+Projet Affecte : ProjetAffecte3
+Titre : Manager
+
+

@@ -51,9 +51,13 @@ public class Armee extends ForceSecurite {
 
     @Override
     public String toString() {
+        String matriculestring="";
+        for(int i=0; i<matricules.length; i++) {
+
+        matriculestring +=" "+ matricules[i];
+        }
         return super.toString() + "\nNombre de victime : " + nombreVictime + "\nNombre de sortie : " + nombreSortie
-                + "\nMaticules :  " +
-                matricules[0] + " " + matricules[1] + " " + matricules[2] + " " + matricules[3] + " " + matricules[4]
+                + "\nMaticules :  " + matriculestring
                 + "\n";
     }
 }

@@ -3,9 +3,10 @@ package com.example.bunker.pkgBunker;
 import java.io.Serializable;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.GregorianCalendar;
 
-public  class Personnel implements Serializable{
+public  class Personnel implements Serializable {
     protected String matricule;
     protected String nom;
     protected String prenom;
@@ -72,7 +73,5 @@ public  class Personnel implements Serializable{
         return getNom().equals(p.getNom()) && getMatricule().equals(p.getMatricule())
                 && getPrenom().equals(p.getPrenom()) && getDateNaissance().equals(p.getDateNaissance());
     }
-    public void AjouterPersonnel(Personnel personnel){
-        PERSONNELS.add(personnel);
-    }
+
 }

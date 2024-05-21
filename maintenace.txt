@@ -1,0 +1,35 @@
+maintenace.txt - 2024-05-21 13:59:59
+
+Matricule : ING1
+Nom : John
+date de naissance : 1985-04-10
+Vvivant : true
+
+Secteur : Maintenance
+Specialite : Electricité
+Date de fin d'etude : 2010-09-15
+Niveau d'etude : 5
+
+
+Matricule : ING2
+Nom : Jane
+date de naissance : 1988-08-22
+Vvivant : true
+
+Secteur : Maintenance
+Specialite : Informatique
+Date de fin d'etude : 2012-12-30
+Niveau d'etude : 4
+
+
+Matricule : ING3
+Nom : Jim
+date de naissance : 1991-12-18
+Vvivant : true
+
+Secteur : Maintenance
+Specialite : Mécanique
+Date de fin d'etude : 2014-03-12
+Niveau d'etude : 3
+
+
