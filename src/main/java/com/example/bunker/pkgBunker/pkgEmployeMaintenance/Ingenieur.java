@@ -41,7 +41,7 @@ public class Ingenieur extends EmployeMaintenance{
 
     public String toString(){
         SimpleDateFormat formatDate = new SimpleDateFormat("yyyy-MM-dd");
-        return super.toString()+"Specialite : "+specialiste+"\nDate de fin d'etude : "+
+        return super.toString()+"\nSpecialite : "+specialiste+"\nDate de fin d'etude : "+
         formatDate.format(dateFinEtude.getTime())+"\nNiveau d'etude : "+niveauEtude+"\n";
     }
     public boolean equals(Ingenieur ing){

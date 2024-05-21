@@ -25,7 +25,7 @@ public class Ouvrier extends EmployeMaintenance {
         return quartDetravail;
     }
     public String toString(){
-        return super.toString()+"Quart de travail : "+quartDetravail+"\nGenre de travail : "+genreDeTravail+"\n";
+        return super.toString()+"\nQuart de travail : "+quartDetravail+"\nGenre de travail : "+genreDeTravail+"\n";
     }
     
     public boolean equals(Ouvrier ouv){

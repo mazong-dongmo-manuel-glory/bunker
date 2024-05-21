@@ -18,7 +18,7 @@ public abstract class EmployeMaintenance extends Personnel{
         this.secteur = secteur;
     }
     public String toString(){
-        return super.toString()+"\nSecteur : "+secteur+"\n";
+        return super.toString()+"\nSecteur : "+secteur;
     }
     public boolean equals(EmployeMaintenance emp){
         return super.equals(emp) && emp.getSecteur().equals(secteur);

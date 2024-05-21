@@ -24,7 +24,7 @@ public class Scientifique extends Gestionnaire {
         for(String projet : listeProjet){
             projetString +=  projet+"\n";
         }
-        return super.toString()+projetString;
+        return super.toString()+"\nProjets :"+projetString;
     }
     public boolean equals(Scientifique s) {
         boolean result = s.getListeProjet().length == listeProjet.length;

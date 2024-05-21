@@ -19,6 +19,7 @@ public class Gui extends Application {
         //chargement de la configuration
         BunkerManager.loadConfig();
         BunkerManager.deserealize();
+        BunkerManager.initData();
         BunkerManager.trierPersonnelsParDateNaissance();
 
         // Chargement du fichier FXML principal
@@ -88,16 +89,10 @@ public class Gui extends Application {
         stage.show();
 
         stage.setOnCloseRequest(event -> {
-            if(BunkerManager.personnels.isEmpty()){
-                Administrateur administrateur = new Administrateur("2304249","zaz","koula",new GregorianCalendar(),true,10,"paris",
-                        1,"test","mission");
-                BunkerManager.personnels.add(administrateur);
-                administrateur = new Administrateur("2304249","zaz","koula",new GregorianCalendar(),true,10,"paris",
-                        1,"test","mission");
-            }
-
             BunkerManager.saveConfig();
             BunkerManager.serealize();
+            BunkerManager.initWriteFile();
+            BunkerManager.trierPersonnelsParDateNaissance();
         });
     }
 

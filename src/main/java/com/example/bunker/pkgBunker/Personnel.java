@@ -66,7 +66,7 @@ public  class Personnel implements Serializable {
     public String toString() {
         SimpleDateFormat formatDate = new SimpleDateFormat("yyyy-MM-dd");
         return "Matricule : " + matricule + "\nNom : " + nom + "\ndate de naissance : " + formatDate.format(dateNaissance.getTime())
-                + "\nVvivant : " + vivant+"\n";
+                + "\nVivant : " + vivant;
     }
 
     public boolean equals(Personnel p) {

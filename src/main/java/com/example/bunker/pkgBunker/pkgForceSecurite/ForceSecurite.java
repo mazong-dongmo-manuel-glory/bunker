@@ -43,7 +43,7 @@ public abstract class ForceSecurite extends Personnel{
     }
     @Override
     public String toString() {
-        return super.toString()+"Grade : "+getGrade()+"\nPoste : "+getPoste()+"\nAnnee de service : "+anneeService+"\n";
+        return super.toString()+"Grade : "+getGrade()+"\nPoste : "+getPoste()+"\nAnnee de service : "+anneeService;
     }
     
     public boolean equals(ForceSecurite f) {

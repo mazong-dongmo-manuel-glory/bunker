@@ -22,7 +22,7 @@ public class Milice extends ForceSecurite {
 
     @Override
     public String toString() {
-        return super.toString() + "Nombre de plainte : " + nombrePlainte + "\n";
+        return super.toString() + "\nNombre de plainte : " + nombrePlainte + "\n";
     }
 
     public boolean equals(Milice m) {

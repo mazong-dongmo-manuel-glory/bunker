@@ -45,8 +45,8 @@ public abstract class Gestionnaire extends Personnel {
     @Override
     public String toString() {
 
-        return super.toString() + "Nombre employe : " + nombreEmploye + "\nSecteur : " + secteur + "\nNombre projet : "
-                + nombreProjet + "\n";
+        return super.toString() + "\nNombre employe : " + nombreEmploye + "\nSecteur : " + secteur + "\nNombre projet : "+
+                + nombreProjet ;
     }
 
     public boolean equals(Gestionnaire g) {

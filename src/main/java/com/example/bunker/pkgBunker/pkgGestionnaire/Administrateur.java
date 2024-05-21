@@ -34,7 +34,7 @@ public class Administrateur extends Gestionnaire {
     }
     
     public String toString(){
-        return super.toString()+"Projet Affecte : "+projetAffecte+"\nTitre : "+titre+"\n";
+        return super.toString()+"\nProjet Affecte : "+projetAffecte+"\nTitre : "+titre+"\n";
     }
     public boolean equals(Administrateur ad){
         return super.equals(ad)+ad.getProjetAffecte() == projetAffecte && titre.equals(ad.getProjetAffecte());
